@@ -1,0 +1,148 @@
+<!DOCTYPE <html>
+<html>
+ <head> 
+  <title>菜单设置</title> 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/wxlayout.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/base.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/lib.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/index.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/richvideo.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/tooltips.css" /> 
+  <style type="text/css">
+		.popover {
+			width: 30%;
+			height: 100%;
+			border-radius: 0px;
+			text-align: center;
+			
+			background-color: lightyellow;
+		}
+		
+		.arrow{
+			color:lightyellow;
+			
+		}
+
+		.popover:hover {
+			opacity: 0.7;
+			cursor: pointer;
+
+		}
+
+		.popover-content {
+			color: gray;
+
+			margin-top:10%;
+		}
+		
+		.js_addMenuBox{
+			margin-top:10%;
+			//padding-bottom:10%;
+			height:50px;
+			
+			line-height:50px;
+			
+		}
+		
+		.js_addMenuBox .sub_pre_menu_inner i{
+			margin-top:18%;
+			
+		}
+	</style> 
+ </head> 
+ <body> 
+  <div class="container_box cell_layout side_l"> 
+   <div class="col_main"> 
+    <div class="main_bd"> 
+     <div class="menu_setting_box js_menuBox dn" style="display:block;"> 
+      <div class="menu_setting_area js_editBox"> 
+       <div class="menu_preview_area"> 
+        <div class="mobile_menu_preview"> 
+         <div class="mobile_hd tc">
+          我的公众号
+         </div> 
+         <div class="mobile_bd"> 
+          <ul class="pre_menu_list grid_line ui-sortable ui-sortable-disabled" id="menuList"> 
+           <!--菜单ul--> 
+           <li class="pre_menu_item grid_item jslevel1 ui-sortable ui-sortable-disabled size1of1  " id="add_jsMenu" title="点击添加菜单，最多设置最多三个菜单！"> <a href="javascript:void(0);" class=" add_pre_menu" draggable="false"> <i class="icon_menu_dot js_icon_menu_dot dn" style="display:none;"></i> <i class="icon20_common sort_gray"></i> <span class="js_l1Title">+</span> </a> </li> 
+           <!--菜单ul--> 
+          </ul> 
+         </div> 
+        </div> 
+        
+       </div> 
+       <div class="menu_form_area"> 
+        <div id="js_none" class="menu_initial_tips tips_global" style="display: none;">
+         点击左侧菜单进行编辑操作
+        </div> 
+        <div id="js_rightBox" class="portable_editor to_left" style="display: block;"> 
+         <div class="editor_inner"> 
+          <div class="global_mod float_layout menu_form_hd js_second_title_bar"> 
+           <h4 class="global_info" id="txtMenuTitle">子菜单名称</h4> 
+           <div class="global_extra"> 
+            <a href="javascript:void(0);" id="jsDelBt">删除子菜单</a> 
+           </div> 
+          </div> 
+          <div class="menu_form_bd" id="view"> 
+           <div id="js_innerNone" style="display: none;" class="msg_sender_tips tips_global">
+            已添加子菜单，仅可设置菜单名称。
+           </div> 
+           <div class="frm_control_group js_setNameBox"> 
+            <label for="" class="frm_label"> <strong class="title js_menuTitle">子菜单名称</strong> </label> 
+            <div class="frm_controls"> 
+             <span class="frm_input_box with_counter counter_in append"> <input type="text" class="frm_input js_menu_name" /> </span> 
+             <p class="frm_msg fail js_titleEorTips dn" style="display: none;">字数超过上限</p> 
+             <p class="frm_msg fail js_titlenoTips dn" style="display: none;">请输入菜单名称</p> 
+             <p class="frm_tips js_titleNolTips">字数不超过8个汉字或16个字母</p> 
+            </div> 
+           </div> 
+           <div class="frm_control_group" style="display: block;"> 
+            <label for="" class="frm_label"> <strong class="title js_menuContent">子菜单内容</strong> </label> 
+            <div class="frm_controls frm_vertical_pt"> 
+            
+             <label class="frm_radio_label js_radio_url selected" data-editing="1"> <i class="icon_radio"></i> <span class="lbl_content">跳转网页</span> <input type="radio" name="hello" class="frm_radio" /> </label> 
+            </div> 
+           </div> 
+           <div class="menu_content_container" style="display: block;"> 
+            
+            </div> 
+            <div class="menu_content url jsMain" id="url" style="display: block;"> 
+             <form action="" id="urlForm" onsubmit="return false;"> 
+              <p class="menu_content_tips tips_global">订阅者点击该子菜单会跳到以下链接</p> 
+              <div class="frm_control_group"> 
+               <label for="" class="frm_label">页面地址</label> 
+               <div class="frm_controls"> 
+                <span class="frm_input_box disabled"> <input type="text" class="frm_input" id="urlText" name="urlText" disabled="disabled" /> </span> 
+                <p class="profile_link_msg_global menu_url mini_tips warn dn js_warn" style="display: none;"> 请勿添加其他公众号的主页链接 </p> 
+                <p class="frm_tips" id="js_urlTitle" style="display: none;"> 来自<span class="js_name"></span><span style="display:none;"> -《<span class="js_title"></span>》</span> </p> 
+               </div> 
+              </div> 
+              
+             </form> 
+            </div> 
+            
+            <div id="js_errTips" style="display:none;" class="msg_sender_msg mini_tips warn"></div> 
+           </div> 
+          </div> 
+         </div> 
+         <span class="editor_arrow_wrp"> <i class="editor_arrow editor_arrow_out"></i> <i class="editor_arrow editor_arrow_in"></i> </span> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  
+ 
+  <script type="text/javascript" src="js/jquery.js"></script> 
+  <script type="text/javascript" src="js/bootstrap.js"></script> 
+  <script type="text/javascript" src="js/index.js"></script> 
+  <script type="text/javascript">
+	function test(){
+		$("#txtId").val(123);
+	}
+</script>  
+ </body>
+</html>
