@@ -3,12 +3,12 @@
  <head> 
   <title>菜单设置</title> 
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> 
-  <link rel="stylesheet" type="text/css" href="css/wxlayout.css" /> 
-  <link rel="stylesheet" type="text/css" href="css/base.css" /> 
-  <link rel="stylesheet" type="text/css" href="css/lib.css" /> 
-  <link rel="stylesheet" type="text/css" href="css/index.css" /> 
-  <link rel="stylesheet" type="text/css" href="css/richvideo.css" /> 
-  <link rel="stylesheet" type="text/css" href="css/tooltips.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/wx_layout.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/wx_base.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/wx_lib.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/wx_index.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/wx_richvideo.css" /> 
+  <link rel="stylesheet" type="text/css" href="css/wx_tooltips.css" /> 
   <style type="text/css">
 		.popover {
 			width: 30%;
@@ -49,6 +49,10 @@
 			margin-top:18%;
 			
 		}
+		
+		#add_jsMenu{
+			border-left:1px solid #e7e7eb
+		}
 	</style> 
  </head> 
  <body> 
@@ -65,7 +69,13 @@
          <div class="mobile_bd"> 
           <ul class="pre_menu_list grid_line ui-sortable ui-sortable-disabled" id="menuList"> 
            <!--菜单ul--> 
-           <li class="pre_menu_item grid_item jslevel1 ui-sortable ui-sortable-disabled size1of1  " id="add_jsMenu" title="点击添加菜单，最多设置最多三个菜单！"> <a href="javascript:void(0);" class=" add_pre_menu" draggable="false"> <i class="icon_menu_dot js_icon_menu_dot dn" style="display:none;"></i> <i class="icon20_common sort_gray"></i> <span class="js_l1Title">+</span> </a> </li> 
+           
+		   
+		   <li class='jsMenu pre_menu_item grid_item jslevel1 ui-sortable ui-sortable-disabled  size1of3'  data-toggle='popover' data-placement='top'><a href='javascript:void(0);' class='pre_menu_link' draggable='false'><i class='icon_menu_dot js_icon_menu_dot dn' style='display: none;'></i><i class='icon20_common sort_gray'></i><span class='js_l1Title'>商城</span> </a> <div class='sub_pre_menu_box js_l2TitleBox' style='display:none;' id='sub_pre_menu_box"+size+"'><ul class='sub_pre_menu_list'> <li class='js_addMenuBox'><a href='javascript:void(0);' class='jsSubView js_addL2Btn' title='最多添加5个子菜单' draggable='false'><span class='sub_pre_menu_inner js_sub_pre_menu_inner'><i class='icon14_menu_add'></i></span></a></li></ul><i class='arrow arrow_out'></i><i class='arrow arrow_in'></i></div></li>
+		   
+		   <li class='jsMenu pre_menu_item grid_item jslevel1 ui-sortable ui-sortable-disabled  size1of3'  data-toggle='popover' data-placement='top'><a href='javascript:void(0);' class='pre_menu_link' draggable='false'><i class='icon_menu_dot js_icon_menu_dot dn' style='display: none;'></i><i class='icon20_common sort_gray'></i><span class='js_l1Title'>服务</span> </a> <div class='sub_pre_menu_box js_l2TitleBox' style='display:none;' id='sub_pre_menu_box"+size+"'><ul class='sub_pre_menu_list'> <li class='js_addMenuBox'><a href='javascript:void(0);' class='jsSubView js_addL2Btn' title='最多添加5个子菜单' draggable='false'><span class='sub_pre_menu_inner js_sub_pre_menu_inner'><i class='icon14_menu_add'></i></span></a></li></ul><i class='arrow arrow_out'></i><i class='arrow arrow_in'></i></div></li>
+		   
+		   <li class='jsMenu pre_menu_item grid_item jslevel1 ui-sortable ui-sortable-disabled size1of3 '  data-toggle='popover' data-placement='top'><a href='javascript:void(0);' class='pre_menu_link' draggable='false'><i class='icon_menu_dot js_icon_menu_dot dn' style='display: none;'></i><i class='icon20_common sort_gray'></i><span class='js_l1Title'>一键报修</span> </a> <div class='sub_pre_menu_box js_l2TitleBox' style='display:none;' id='sub_pre_menu_box"+size+"'><ul class='sub_pre_menu_list'> <li class='js_addMenuBox'><a href='javascript:void(0);' class='jsSubView js_addL2Btn' title='最多添加5个子菜单' draggable='false'><span class='sub_pre_menu_inner js_sub_pre_menu_inner'><i class='icon14_menu_add'></i></span></a></li></ul><i class='arrow arrow_out'></i><i class='arrow arrow_in'></i></div></li>
            <!--菜单ul--> 
           </ul> 
          </div> 
@@ -88,10 +98,27 @@
            <div id="js_innerNone" style="display: none;" class="msg_sender_tips tips_global">
              已添加子菜单，仅可设置菜单名称。 
            </div> 
-           <div class="frm_control_group js_setNameBox"> 
-            <label for="" class="frm_label"> <strong class="title js_menuTitle">子菜单名称</strong> </label> 
-            <div class="frm_controls"> 
-             <span class="frm_input_box with_counter counter_in append"> <input type="text" class="frm_input js_menu_name" id="txtMenuName" /> </span> 
+           <div class="frm_control_group js_setNameBox" style="background-color:white;padding:2%"> 
+            <label for="" class="frm_label" style="line-height:240%"> <strong class="title js_menuTitle">子菜单名称</strong> </label> 
+            <div class="frm_controls" > 
+             <span  class=" with_counter counter_in append"> 
+				<!--下拉菜单开始-->
+				<ul class="nav nav-pills" role="tablist" style="width:18%;border-radius:6px;">
+					  <li role="presentation" class="dropdown" style="width:100%">
+						<a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  请选择菜单名
+						  <span class="caret"></span>
+						</a>
+						<ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop3">
+						  <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">商城</a></li>
+						  <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">商城</a></li>
+						  <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">商城</a></li>
+						  
+						</ul>
+					  </li>
+					</ul>
+				<!--下拉菜单结束-->
+			 </span> 
              <p class="frm_msg fail js_titleEorTips dn" style="display: none;">字数超过上限</p> 
              <p class="frm_msg fail js_titlenoTips dn" style="display: none;">请输入菜单名称</p> 
              <p class="frm_tips js_titleNolTips">字数不超过8个汉字或16个字母</p> 
@@ -111,7 +138,9 @@
              <div class="frm_control_group"> 
               <label for="" class="frm_label">页面地址</label> 
               <div class="frm_controls"> 
-               <span class="frm_input_box disabled"> <input type="text" class="frm_input" id="urlText" name="urlText"  /> </span> 
+               <span class="frm_input_box disabled"> <input type="text" class="frm_input" id="urlText" name="urlText"  /> 
+			   
+			   </span> 
                <p class="profile_link_msg_global menu_url mini_tips warn dn js_warn" style="display: none;"> 请勿添加其他公众号的主页链接 </p> 
                <p class="frm_tips" id="js_urlTitle" style="display: none;"> 来自<span class="js_name"></span><span style="display:none;"> -《<span class="js_title"></span>》</span> </p> 
               </div> 
@@ -134,7 +163,7 @@
   </div> 
   <script type="text/javascript" src="js/jquery.js"></script> 
   <script type="text/javascript" src="js/bootstrap.js"></script> 
-  <script type="text/javascript" src="js/index.js"></script> 
+  <script type="text/javascript" src="js/wx_index.js"></script> 
   <script type="text/javascript">
 	function test(){
 		$("#txtId").val(123);

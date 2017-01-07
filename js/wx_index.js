@@ -6,30 +6,49 @@ $(function(){
 	
 
 	//增加菜单
-	$("#add_jsMenu").click(function(){
-		var size = $(".pre_menu_list > li").length - 1 ;
-		//size = 0;
-		addMenu(size + 1);
-		
-	});
+	$("#add_jsMenu").click(addMenu);
 	
 	
 	$("#jsDelBt").click(function(){
+		//获取当前的元素
 		var currentElement = $('.current');
+		
+		//1. 删除主菜单
+		//判断是否为主菜单
+		if(currentElement.hasClass('jsMenu')){
+			//alert(currentElement.siblings().length);
+			var size = currentElement.siblings().length;
+			if(confirm("您确定要删除该菜单吗，删除后该菜单下设置的内容将被删除!")){
+				if(size <= 3)
+					currentElement.siblings("#add_jsMenu").show();
+				currentElement.remove();
+			}
+			else
+				return;
+			
+			$('.pre_menu_list > li').removeClass("size1of"+(size+1));
+			$('.pre_menu_list > li').addClass("size1of"+size);
+			return;
+		}
+		
+		//2. 删除子菜单
 		var subMenuLength = currentElement.siblings().length;
 		var mainMenu = currentElement.parent().parent().prev();
 		if(confirm("您确定要删除该菜单吗，删除后该菜单下设置的内容将被删除!"))
 			currentElement.remove();
+		else
+			return;
 		
-		//判断子菜单是否删除
 		
+		
+		//判断子菜单是否删除,如果子菜单完成删除，则选择主菜单
 		if(subMenuLength <= 1){
 			mainMenu.find('i').hide();
 			mainMenu.click();
 		}else{
 			//alert(mainMenu.next().find('ul').attr('class'));
 			//alert(mainMenu.next().find('ul').children().eq(-2).attr('class'));
-			mainMenu.next().find('ul').children().eq(-2).click();
+			mainMenu.next().find('ul').children().eq(-2).click();//选择兄弟子菜单
 		}
 	});
 
@@ -37,8 +56,11 @@ $(function(){
 
 
 
+
 //动态增加菜单
-function addMenu(size){
+function addMenu(){
+	
+	var size = $(".pre_menu_list > li").length;
 	
 	//0-->1, 1-->2, 3-->3 
 	$('.pre_menu_list > li').removeClass("size1of"+size);
